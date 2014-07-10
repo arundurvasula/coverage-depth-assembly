@@ -26,7 +26,7 @@ map () {
 
 plot() {
 	genomeCoverageBed -ibam ../results/$1/mapped.sorted.alignment.bam -g $refseq -d > ../results/$1/coverageHist.txt
-	cat ../results/$1/coverageHist.txt | ./rplot.r ../results/$1/plot.pdf
+	cat ../results/$1/coverageHist.txt | ./rplot.r ../results/$1/plot.png
 }
 
 for index in ${!covs[*]}
