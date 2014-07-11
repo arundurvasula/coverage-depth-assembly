@@ -6,7 +6,7 @@ source /home/arun/.bash_profile
 
 set -e
 set -u
-
+suffix='.subsamp'
 reads='../data/trimmed-reads/3163_Y920_NoIndex_L002_R1_001trimmed.fasta'
 refseq='../data/refseq/citrus-yellow-vein-associated-virus.fasta'
 covs=('5x' '10x' '20x' '30x' '40x' '50x')
@@ -25,8 +25,8 @@ map () {
 }
 
 plot() {
-	genomeCoverageBed -ibam ../results/$1/mapped.sorted.alignment.bam -g $refseq -d > ../results/$1/coverageHist.txt
-	cat ../results/$1/coverageHist.txt | ./rplot.r ../results/$1/plot.png
+	genomeCoverageBed -ibam ../results/$1/mapped.sorted.alignment.bam -g $refseq -d > ../results/$1/coverageHist$suffix.txt
+	cat ../results/$1/coverageHist$suffix.txt | ./rplot.r ../results/$1/plot$suffix.png
 }
 
 for index in ${!covs[*]}
